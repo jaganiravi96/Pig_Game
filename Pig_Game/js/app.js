@@ -34,27 +34,18 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     diceDOM.src = '../resource/dice-'+dice+'.png';
     
     //Update player round score if the rolled number is not 1.
-   if(dice != 1){
+    if(dice != 1){
         roundScore = roundScore + dice;
-        parseInt(document.getElementById('current-'+activePlayer).textContent) = roundScore;
+        document.getElementById('current-'+activePlayer).textContent = roundScore;
         console.log(document.getElementById('score-'+activePlayer).value);
     }
     else{
+        document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
+        document.querySelector('.player-'+activePlayer+'-panel').classList.add('active');
+        document.querySelector('.dice').style.display = 'none';
     }
-    
-   /* var temp = 0;
-    if(activePlayer == 0){
-         temp = document.getElementById('score-0').;
-         temp = temp + roundScore; 
-         document.getElementById('score-0').textContent = temp;
-        //activePlayer = 1;    
-    }
-    else{
-        document.getElementById('score-1').textContent += roundScore;
-        //activePlayer = 0;
-    }*/
     
 });
 
